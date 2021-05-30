@@ -998,7 +998,17 @@ ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://d
   });
 
 }
-
+function UrlExists(url, cb) {
+  jQuery.ajax({
+    url: url,
+    dataType: 'text',
+    type: 'GET',
+    complete: function (xhr) {
+      if (typeof cb === 'function')
+        cb.apply(this, [xhr.status]);
+    }
+  });
+}
 // File display Audio |mp3|flac|m4a|wav|ogg|
 function file_audio(path,albumart) {
     var name = path.split('/').pop();
