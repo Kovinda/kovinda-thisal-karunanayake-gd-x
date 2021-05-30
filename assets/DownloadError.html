@@ -1,0 +1,133 @@
+<html>
+
+<head>
+   <title>Error</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="apple-touch-icon" sizes="180x180"
+      href="https://cdn.jsdelivr.net/gh/Kovinda/res@master/img/K/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32"
+      href="https://cdn.jsdelivr.net/gh/Kovinda/res@master/img/K/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16"
+      href="https://cdn.jsdelivr.net/gh/Kovinda/res@master/img/K/favicon-16x16.png">
+   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400&display=swap" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+   <style>
+      canvas {
+         display: block;
+         vertical-align: bottom;
+      }
+
+      #particles-js {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+      }
+
+
+      body {
+         margin: 0;
+         padding: 0;
+         width: 100%;
+         height: 100%;
+         background-color: #000000;
+         display: table;
+         font-weight: 100;
+         font-family: 'Quicksand', sans-serif;
+      }
+
+
+      .text {
+         text-align: center;
+         position: absolute;
+         display: inline-block;
+         top: 50%;
+         right: 50%;
+         transform: translate(50%, -50%);
+         color: #fff;
+         max-width: 90%;
+         padding: 2em 3em;
+         text-shadow: 0px 0px 10px #e97bff;
+         font-family: "Open Sans", sans-serif;
+      }
+      h1 {
+         font-size: 2.25em;
+         font-weight: 700;
+         letter-spacing: -1px;
+      }
+/* 
+      a,
+      a:visited {
+         background-color: rgb(54, 54, 54);
+         padding: 0.2em 0.7em;
+         color: #ff26db;
+         transition: 0.25s;
+         text-decoration: none;
+         display: block;
+         margin: 0px 100px;
+         border-radius: 20px;
+         background: linear-gradient(to right,rgb(29, 29, 29),rgb(0, 41, 51));
+
+      }
+      
+
+      a:hover,
+      a:focus {
+         color: #976bff;
+         text-decoration: none;
+         
+      } */
+      
+      
+      .btn-grad {background-image: linear-gradient(to right, #b200fc 0%, #ff00bf  51%, #b200fc  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 0.5em 1em;
+            text-align: center;
+            /* text-transform: uppercase; */
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            text-decoration: none;
+            /* display: block; */
+          }
+
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+         
+   </style>
+</head>
+
+<body>
+   <div id="particles-js"></div>
+   
+
+   <div class="text" >
+      <img  style="filter:invert(100%); " border="0" alt="Kovinda Karunanayake"  src="https://cdn.jsdelivr.net/gh/Kovinda/res@master/img/K/safari-pinned-tab.svg">
+      <h1>Sorry, you can't view or download this file at this time <br>¯\_(ツ)_/¯</h1>
+      <p>Please contact Kovinda </p>
+        
+         <a  class="btn-grad" href="https://t.me/kovinda_thisal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="vertical-align: bottom;" fill="white" class="bi bi-telegram" viewBox="0 0 16 16">
+               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+             </svg>
+            Kovinda</a>
+   </div>
+
+
+
+   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+   <script>
+      particlesJS("particles-js", { "particles": { "number": { "value": 58, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#b200fc" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 160.24100246771155, "color": "#ffffff", "opacity": 0.5368073582668338, "width": 0.9614460148062693 }, "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 316.49421789409644, "line_linked": { "opacity": 0.3206261252743821 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 89.2675999188477, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }); 
+
+   </script>
+
+
+
+</body>
+
+</html>
