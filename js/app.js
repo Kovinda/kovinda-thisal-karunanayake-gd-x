@@ -1,6 +1,7 @@
 
 // v2.0.18
 // Initialize the page
+var imageUri;
 function init() {
     document.siteName = $('title').html();
     var html = `<header>
@@ -1006,7 +1007,7 @@ function file_audio(path) {
     var obj = jQuery.parseJSON(gdidecode(read(data)));
     var size = formatFileSize(obj.size);
     var jsmediatags = window.jsmediatags;
-    var imageUri;
+    
       var tags = {};
       jsmediatags.read(url, {
           onSuccess: function (tag) {
