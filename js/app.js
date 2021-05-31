@@ -772,6 +772,7 @@ function file(path) {
     var name = path.split('/').pop();
     var path = path;
     var url = UI.second_domain_for_dl ? UI.downloaddomain + path : window.location.origin + path;
+    var colorify= window.colorify;
     var jsmediatags = window.jsmediatags;
       var tags = {};
       jsmediatags.read(url, {
@@ -784,6 +785,17 @@ function file(path) {
                   base64String += String.fromCharCode(picture.data[i]);
               }
               var imagedata = "data:" + picture.format + ";base64," + window.btoa(base64String);
+              colorify({
+                container: 'colorify-gradient-color',
+                accuracy: 10,
+                gradient: true,
+                gradientDirection: 'to bottom right',
+                lazyReveal: {
+                  delay: 3 // 3 second before revealing
+                }
+              
+              });
+
               return file_audio(path,imagedata);
 
               
@@ -796,6 +808,7 @@ function file(path) {
               
           }
       });
+      
       
      
 
@@ -1041,7 +1054,7 @@ function file_audio(path,image) {
   <div class="card" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
   <div class="card-body text-center">
   <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
-  <br><img draggable="false" src="${image ? image : UI.audioposter }" width="100%" /><br>
+  <br><div colorify-gradient-color><img colorify draggable="false" src="${image ? image : UI.audioposter }" width="100%" /></div><br>
   <audio id="vplayer" width="100%" playsinline controls>
     <source src="${url}" type="audio/ogg">
     <source src="${url}" type="audio/mpeg">
