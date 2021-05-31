@@ -1031,7 +1031,7 @@ function file_audio(path) {
   <div class="card" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
   <div class="card-body text-center">
   <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
-  <br><img draggable="false" src="${(typeof variable === 'undefined')  ? UI.audioposter : imageUri}" width="100%" /><br>
+  <br><img draggable="false" src="${(typeof imageUri === 'undefined')  ? UI.audioposter : imageUri}" width="100%" /><br>
   <audio id="vplayer" width="100%" playsinline controls>
     <source src="${url}" type="audio/ogg">
     <source src="${url}" type="audio/mpeg">
