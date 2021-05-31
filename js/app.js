@@ -769,7 +769,35 @@ function file(path) {
     }
 
     if ("|mp3|flac|wav|ogg|m4a|aac|".indexOf(`|${ext}|`) >= 0) {
-      return file_audio(path);
+    var name = path.split('/').pop();
+    var path = path;
+    var url = UI.second_domain_for_dl ? UI.downloaddomain + path : window.location.origin + path;
+    var jsmediatags = window.jsmediatags;
+      var tags = {};
+      jsmediatags.read(url, {
+
+          onSuccess: function (tag) {
+              tags = tag;
+              var picture = tags.tags.picture; // create reference to track art
+              var base64String = "";
+              for (var i = 0; i < picture.data.length; i++) {
+                  base64String += String.fromCharCode(picture.data[i]);
+              }
+              var imagedata = "data:" + picture.format + ";base64," + window.btoa(base64String);
+              return file_audio(path,imagedata);
+
+              
+          },
+          onError: function (error) {
+            var imagedata = 0;
+            console.log(error);
+            return file_audio(path,imagedata)
+              // handle error
+              
+          }
+      });
+      
+     
 
     }
 
@@ -997,7 +1025,7 @@ function UrlExists(url, cb) {
   });
 }
 // File display Audio |mp3|flac|m4a|wav|ogg|
-function file_audio(path) {
+function file_audio(path,image) {
     var name = path.split('/').pop();
     var decodename = unescape(name);
     var path = path;
@@ -1006,42 +1034,14 @@ function file_audio(path) {
     function(data){
     var obj = jQuery.parseJSON(gdidecode(read(data)));
     var size = formatFileSize(obj.size);
-    var jsmediatags = window.jsmediatags;
-    var imageUri;
-    var count1=1;
-      var tags = {};
-      jsmediatags.read(url, {
-          onSuccess: function (tag) {
-              tags = tag;
-              var picture = tags.tags.picture; // create reference to track art
-              var base64String = "";
-              for (var i = 0; i < picture.data.length; i++) {
-                  base64String += String.fromCharCode(picture.data[i]);
-              }
-              var image = "data:" + picture.format + ";base64," + window.btoa(base64String);
-              imageUri = image;
-              console.log(typeof imageUri);
-              console.log(imageUri);
-              count1+=1;
-              console.log(count1);
-              
-          },
-          onError: function (error) {
-            console.log(imageUri);
-              // handle error
-              console.log(error);
-          }
-      });
-      console.log(" ")
-      console.log(count1);
-      console.log(imageUri);
-      console.log(typeof imageUri);
+    
+      
     var content = `
   <div class="container"><br>
   <div class="card" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
   <div class="card-body text-center">
   <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
-  <br><img draggable="false" src="${(typeof imageUri === 'undefined')  ? UI.audioposter : imageUri}" width="100%" /><br>
+  <br><img draggable="false" src="${image ? image : UI.audioposter }" width="100%" /><br>
   <audio id="vplayer" width="100%" playsinline controls>
     <source src="${url}" type="audio/ogg">
     <source src="${url}" type="audio/mpeg">
