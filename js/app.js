@@ -1028,6 +1028,9 @@ function file_audio(path) {
               console.log(error);
           }
       });
+      console.log(" ")
+      console.log(imageUri);
+      console.log(typeof imageUri);
     var content = `
   <div class="container"><br>
   <div class="card" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
