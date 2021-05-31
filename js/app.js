@@ -1008,7 +1008,7 @@ function file_audio(path) {
     var jsmediatags = window.jsmediatags;
     var imageUri;
       var tags = {};
-      jsmediatags.read(path, {
+      jsmediatags.read(url, {
           onSuccess: function (tag) {
               tags = tag;
               var picture = tags.tags.picture; // create reference to track art
