@@ -1,7 +1,7 @@
 
 // v2.0.18
 // Initialize the page
-var imageUri;
+
 function init() {
     document.siteName = $('title').html();
     var html = `<header>
@@ -1007,7 +1007,8 @@ function file_audio(path) {
     var obj = jQuery.parseJSON(gdidecode(read(data)));
     var size = formatFileSize(obj.size);
     var jsmediatags = window.jsmediatags;
-    
+    var imageUri;
+    var count1=1;
       var tags = {};
       jsmediatags.read(url, {
           onSuccess: function (tag) {
@@ -1017,10 +1018,12 @@ function file_audio(path) {
               for (var i = 0; i < picture.data.length; i++) {
                   base64String += String.fromCharCode(picture.data[i]);
               }
-              imageUri = "data:" + picture.format + ";base64," + window.btoa(base64String);
+              var image = "data:" + picture.format + ";base64," + window.btoa(base64String);
+              imageUri = image;
               console.log(typeof imageUri);
               console.log(imageUri);
-              
+              count1+=1;
+              console.log(count1);
               
           },
           onError: function (error) {
@@ -1030,6 +1033,7 @@ function file_audio(path) {
           }
       });
       console.log(" ")
+      console.log(count1);
       console.log(imageUri);
       console.log(typeof imageUri);
     var content = `
