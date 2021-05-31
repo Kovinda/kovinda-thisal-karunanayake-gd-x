@@ -144,7 +144,7 @@ function html(current_drive_order = 0, model = {}) {
   }
   </style>
   <script src="${uiConfig.jsdelivr_cdn_src}@master/js/app.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js">
   <script src="https://cdn.jsdelivr.net/gh/mozilla/pdf.js@gh-pages/build/pdf.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>

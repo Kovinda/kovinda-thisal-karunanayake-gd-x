@@ -768,22 +768,8 @@ function file(path) {
     }
 
     if ("|mp3|flac|wav|ogg|m4a|aac|".indexOf(`|${ext}|`) >= 0) {
-      let _albumArtPath = path.substring(0, path.lastIndexOf("/")) + "/cover.jpg";
-      let albumArtPath = UI.second_domain_for_dl ? UI.downloaddomain + _albumArtPath : window.location.origin + _albumArtPath;
-  
-  
-      UrlExists(albumArtPath, function (status) {
-  
-        if (status === 200) {
-          console.log("200 - OK");
-          return file_audio(path,albumArtPath);
-        } else {
-          console.log("No cover");
-          return file_audio(path,UI.audioposter);
-          console.log(albumArtPath);
-        }
-      });
-      
+      return file_audio(path);
+
     }
 
     if ("|bmp|jpg|jpeg|png|gif|".indexOf(`|${ext}|`) >= 0) {
@@ -1010,7 +996,7 @@ function UrlExists(url, cb) {
   });
 }
 // File display Audio |mp3|flac|m4a|wav|ogg|
-function file_audio(path,albumart) {
+function file_audio(path) {
     var name = path.split('/').pop();
     var decodename = unescape(name);
     var path = path;
@@ -1019,12 +1005,31 @@ function file_audio(path,albumart) {
     function(data){
     var obj = jQuery.parseJSON(gdidecode(read(data)));
     var size = formatFileSize(obj.size);
+    var jsmediatags = window.jsmediatags;
+    var imageUri;
+      var tags = {};
+      jsmediatags.read(path, {
+          onSuccess: function (tag) {
+              tags = tag;
+              var picture = tags.tags.picture; // create reference to track art
+              var base64String = "";
+              for (var i = 0; i < picture.data.length; i++) {
+                  base64String += String.fromCharCode(picture.data[i]);
+              }
+              imageUri = "data:" + picture.format + ";base64," + window.btoa(base64String);
+          },
+          onError: function (error) {
+            imageUri = UI.audioposter;
+              // handle error
+              console.log(error);
+          }
+      });
     var content = `
   <div class="container"><br>
   <div class="card" style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);">
   <div class="card-body text-center">
   <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
-  <br><img draggable="false" src="${albumart}" width="100%" /><br>
+  <br><img draggable="false" src="${imageUri}" width="100%" /><br>
   <audio id="vplayer" width="100%" playsinline controls>
     <source src="${url}" type="audio/ogg">
     <source src="${url}" type="audio/mpeg">
