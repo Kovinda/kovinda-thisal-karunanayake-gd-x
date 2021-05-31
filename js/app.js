@@ -1018,12 +1018,14 @@ function file_audio(path) {
               }
               imageUri = "data:" + picture.format + ";base64," + window.btoa(base64String);
               console.log(imageUri);
+              console.log("success");
           },
           onError: function (error) {
             imageUri = UI.audioposter;
             console.log(imageUri);
               // handle error
               console.log(error);
+              console.log("error");
           }
       });
     var content = `
