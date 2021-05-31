@@ -1017,6 +1017,8 @@ function file_audio(path) {
                   base64String += String.fromCharCode(picture.data[i]);
               }
               imageUri = "data:" + picture.format + ";base64," + window.btoa(base64String);
+              console.log(typeof imageUri);
+              console.log(imageUri);
               
               
           },
