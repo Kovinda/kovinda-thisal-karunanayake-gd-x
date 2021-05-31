@@ -1,6 +1,7 @@
 
 // v2.0.18
 // Initialize the page
+var colorify= window.colorify;
 
 function init() {
     document.siteName = $('title').html();
@@ -772,7 +773,6 @@ function file(path) {
     var name = path.split('/').pop();
     var path = path;
     var url = UI.second_domain_for_dl ? UI.downloaddomain + path : window.location.origin + path;
-    var colorify= window.colorify;
     var jsmediatags = window.jsmediatags;
       var tags = {};
       jsmediatags.read(url, {
